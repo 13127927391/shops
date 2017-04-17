@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>我的书店</title>
+	<link rel="stylesheet" href="./ionic/css/ionic.min.css">
+	<link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+<ion-side-menus>
+	<ion-side-menu-content>
+		<!-----------------头部-------------------->
+		<ion-header-bar class="bar-positive item-input-inset" align-title="center" ng-controller="navCtroller">
+			<div class="buttons">
+				<button class="button button-clear" menu-toggle="left">
+					<i class="icon ion-navicon"></i>
+				</button>
+			</div>
+			 <label class="item-input-wrapper">
+			    <i class="icon ion-ios-search placeholder-icon"></i>
+			    <input type="search" placeholder="请输入您要搜索的名称" ng-model="searchValue">
+ 	 		</label>
+			<div class="buttons">
+				<button class="button" ng-click="searchFn()" ui-sref="sousuo({word:searchValue})">
+					搜索
+				</button>
+			</div>
+		</ion-header-bar>
+
+
+	<!-------------------页脚---------------------->
+		<ion-tabs class="tabs-icon-top tabs-positive" ng-controller="footCtroller">
+			<ion-tab title="首页" icon="ion-home" ui-sref="home"></ion-tab>
+			<ion-tab title="分类" icon="ion-ios-keypad-outline" ui-sref="fenlei"></ion-tab>
+			<ion-tab title="收藏" icon="ion-star" ui-sref="shoucang"></ion-tab>
+			<ion-tab title="购物车" icon="ion-ios-cart" ui-sref="shopcar"  badge="totalNumber" badge-style="badge-assertive"></ion-tab>
+			<ion-tab title="我" icon="ion-person" ng-click="geRen()"> 
+			</ion-tab>
+		</ion-tabs>
+		
+		<ui-view></ui-view>
+
+	</ion-side-menu-content>
+	<!--侧栏菜单 左边-->
+	<ion-side-menu side="left">
+		<ion-list>
+			<div class="item item-divider">
+				<img src="./images/0.jpg" alt="" class=" full-image">
+			</div>
+			<ion-item menu-close>关于我们</ion-item>
+			<ion-item menu-close>加入我们</ion-item>
+			<ion-item menu-close>联系我们</ion-item>
+			<ion-item menu-close>举报我们</ion-item>
+		</ion-list>
+	</ion-side-menu>
+</ion-side-menus>
+
+
+
+
+
+
+	<script src="./ionic/js/ionic.bundle.min.js"></script>
+	<script src="./ionic/js/angular/angular-sanitize.min.js"></script>
+	<script src="./ionic/angular-cookies.min.js"></script>
+	<script src="./app/app.js"></script>
+	<script src="./app/nav/controllers.js"></script>
+	<script src="./app/foot/controllers.js"></script>
+	<script src="./app/content/lunbo.js"></script>
+	<script src="./app/content/controllers.js"></script>
+	<script src="./app/content/xiangqing.js"></script>
+	<script src="./app/content/services.js"></script>
+	<script src="./app/content/sousuo.js"></script>
+	<script src="./app/content/shopcar.js"></script>
+	<script src="./app/content/my.js"></script>
+	<script src="./app/content/fenlei.js"></script>
+	<script src="./app/content/dingdan.js"></script>
+	<script src="./app/content/pinglun.js"></script>
+	<script src="./app/content/jiben.js"></script>
+	<script src="./app/foot/denglu.js"></script>
+	<script src="./app/foot/zhuce.js"></script>
+
+</body>
+</html>

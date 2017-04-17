@@ -1,0 +1,39 @@
+<div ng-controller="xiangqingCtrl">
+	<ion-header-bar class="bar-positive" align-title="center">
+		<button class="button button-clear" ui-sref="home">
+			<i class="icon ion-ios-undo"></i>
+		</button>
+		<h1 class="title">商品详情</h1>
+	</ion-header-bar>
+	<ion-content padding="true" class="has-tabs">
+		<ion-list>
+			<img ng-src="./shopApi/images/{{xiangqingList.images[0].image_name}}" alt="" class="full-image" >
+			<h3>{{xiangqingList.title}}</h3>
+			<p>{{xiangqingList.author}}</p>
+			<p class="list_price">{{xiangqingList.price | currency : "&yen;"}}</p>
+
+			<button class="button button-clear button-assertive" style="font-size:20px;">
+				详情信息：
+			</button>
+			<p ng-bind-html="myHtml"></p>
+			<button class="button button-clear button-dark" style="font-size:20px;">
+				评 论：
+			</button>
+				<div class="card">
+				  <div class="item item-divider">
+				    maomao
+				  </div>
+				  <div class="item item-text-wrap">
+				    这本书真好看
+				  </div>
+				</div>
+
+			<a class="button button-small button-calm" ui-sref="pinglun({num:{{'xiangqingList.id'}}})">评论</a>
+		</ion-list>
+	</ion-content>
+	<ion-tabs  class="tabs-light">
+		<button class="button button-light icon ion-star col"></button>	
+		<button class="button button-positive col" ng-click="goumai()">立即购买</button>
+		<button class="button button-assertive col" ng-click="addShopcar(xiangqingList)">加入购物车</button>
+	</ion-tabs>
+</div>

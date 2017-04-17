@@ -1,0 +1,127 @@
+
+	<!-------------------主题---------------------->
+	<ion-content class="has-tabs has-header" ng-controller="lunboCtrl">
+
+		<!-----------------轮播------------------>
+			<ion-slide-box active-slide="model.activeIndex" does-continue="true" slide-interval="3000" auto-play="true" show-pager="true" pager-click="toSlideIndex(index)" on-tap="stopOrStart()" >
+			    <ion-slide>
+			      <div class="box">
+			       <a href="#"><img src="./images/logo1.jpg"></a>
+			      </div>
+			    </ion-slide>
+			    <ion-slide>
+			      <div class="box">
+			        <a href="#"><img src="./images/logo2.jpg"></a>
+			      </div>
+			    </ion-slide>
+			     <ion-slide>
+			      <div class="box">
+			       <a href="#"><img src="./images/logo3.jpg"></a>
+			      </div>
+			    </ion-slide>
+			    <ion-slide>
+			      <div class="box">
+			        <a href="#"><img src="./images/logo4.jpg"></a>
+			      </div>
+			    </ion-slide>
+			  </ion-slide-box>
+			<button class="button button-clear button-energized" style="font-size:25px;">
+				分类
+			</button>
+			<div class="tubiao">
+				<p>
+					<i class="icon ion-ios-flame-outline"></i><br>
+					热门
+				</p>
+				<p>
+					<i class="icon ion-heart"></i><br>
+					推荐
+				</p>
+				<p>
+					<i class="icon ion-easel"></i><br>
+					艺术类
+				</p>
+				<p>
+					<i class="icon ion-ios-book-outline"></i><br>
+					动漫类
+				</p>
+			</div>
+			<div class="tubiao">
+		
+				<p>
+					<i class="icon ion-ios-list-outline"></i><br>
+					文学类
+				</p>
+				<p>
+					<i class="icon ion-ios-browsers-outline"></i><br>
+					科幻类
+				</p>
+				<p>
+					<i class="icon ion-male"></i><br>
+					男生专区
+				</p>
+				<p>
+					<i class="icon ion-female"></i><br>
+					女生专区
+				</p>
+			</div>
+
+
+			<button class="button button-clear button-assertive" style="font-size:25px;">
+				热门推荐
+			</button>
+		
+			<div class="row">
+				<div class="col">
+					<div class="item item-body">
+				    <img class="full-image" src="./shopApi/images/1.jpg">
+				    <p class="col_p">
+				      <a href="#" class="subdued">荒野求生</a><br>
+				      <a href="#" class="subdued">贝爷</a>
+				    </p>
+		  			</div>
+				</div>
+				<div class="col">
+					<div class="item item-body">
+				    <img class="full-image" src="./shopApi/images/2.jpg">
+				    <p class="col_p">
+				      <a href="#" class="subdued">十里桃花</a><br>
+				      <a href="#" class="subdued">唐七</a>
+				    </p>
+		  			</div>
+				</div>
+			</div>
+				
+				
+			<button class="button button-clear button-dark" style="font-size:25px;">
+				技术商品列表
+			</button>
+			<ion-list ng-controller="jishuCtrl" class="row">
+				<ion-item class="item-thumbnail-top col col-33 shop_list" ng-repeat="book in jishuList">
+					<img ng-src="./shopApi/images/{{book.images[0].image_name}}" alt="" class="full-image" ui-sref="xiangqing({id:{{book.id}}})">
+					<h3>{{book.title}}</h3>
+					<p>{{book.author}}</p>
+					<p class="list_price">{{book.price | currency : "&yen;"}}</p>
+
+				</ion-item>
+			</ion-list>
+			
+			<button class="button button-clear button-dark" style="font-size:25px;">
+				文学商品列表
+			</button>
+			<ion-list ng-controller="jishuCtrl" class="row">
+				<ion-item class="item-thumbnail-top col col-33 shop_list" ng-repeat="book in wenxueList">
+					<img ng-src="./shopApi/images/{{book.images[0].image_name}}" alt="" class="full-image" ng-click="opModal(book)" ui-sref="xiangqing({id:{{book.id}}})">
+					<h3>{{book.title}}</h3>
+					<p>{{book.author}}</p>
+					<p class="list_price">{{book.price | currency : "&yen;"}}</p>
+				</ion-item>
+				<!--上拉加载-->
+				<ion-infinite-scroll on-infinite="loadMore()">
+				</ion-infinite-scroll>
+			</ion-list>
+		
+	</ion-content>
+
+
+

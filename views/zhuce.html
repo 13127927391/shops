@@ -1,0 +1,70 @@
+<ion-header-bar>
+	<div class="buttons">
+		<button class="button" ui-sref="loginModal">返回</button>
+	</div>
+	<h1 class="title">注册</h1>
+</ion-header-bar>
+<ion-content padding="true" ng-controller="zhuceCtrl">
+	<form name="myForm" ng-submit="submitData()" method="post">
+		<label class="item item-input item-floating-label">
+			<input type="text" 
+					placeholder="请输入用户名"
+	               ng-model="userdata.username" 
+	               name="usernameEle" 
+	               id="usernameInput"
+	               autocomplete="off"
+	               ng-pattern="/^[A-Za-z]\w{4,12}$/"
+	               ng-required="true"
+				>
+				<p class="text-danger" ng-if="myForm.usernameEle.$touched && myForm.usernameEle.$invalid">用户名必须是5-12位的数字、字母、下划线</p>
+		</label>
+		<label class="item item-input item-floating-label">
+			<input type="password" 
+					placeholder="请输入密码"
+	               ng-model="userdata.pwd"
+	               name="pwdEle"
+	               ng-pattern="/^\w{6,12}$/"
+	               autocomplete="off"        
+	               ng-required="true"
+	               ng-minlength="6"
+	               ng-maxlength="18"
+				>
+				 <p class="text-danger" ng-if="myForm.pwdEle.$touched && myForm.pwdEle.$error.required">密码不能为空</p>
+	             <p class="text-danger" ng-if="myForm.pwdEle.$touched && (myForm.pwdEle.$error.minlength || myForm.pwdEle.$error.maxlength)">密码长度必须是6-18位</p>
+		</label>
+		<label class="item item-input item-floating-label">
+			<input type="password"
+					placeholder="确认密码"
+					name="repwdEle" 
+                   class="form-control"
+                   ng-model="userdata.repwd"
+			>
+			 <p class="text-danger" ng-if="myForm.repwdEle.$touched && !checkPwd()">两次密码不一致</p>
+		</label>
+
+		<label class="item item-input item-floating-label">
+			<input type="tel"
+					placeholder="电话"
+					ng-model="userdata.tel"
+					ng-pattern="/^1([358][0-9]|4[57]|7[0135678])\d{8}$/"
+					name="telEle"
+					autocomplete="off"
+					ng-required="true"
+					ng-minlength="11"
+			>
+			<p class="text-danger" ng-if="myForm.telEle.$touched && myForm.telEle.$error.required">电话不能为空</p>
+			<p class="tetx-danger" ng-if="myForm.telEle.$touched &&  myForm.telEle.$error.minlength">电话格式不正确</p>
+		</label>
+		<br>
+		<span>性别：</span>
+		<label>
+			<input type="radio" ng-model="userdata.sex" value="m">男
+		</label>
+		<label>
+			<input type="radio" ng-model="userdata.sex" value="w">女
+		</label>
+
+		<button class="button button-block button-assertive" ng-click="zhuCe()" ng-disabled="myForm.$invalid || !checkPwd()">注册</button>
+	</form>
+
+</ion-content>

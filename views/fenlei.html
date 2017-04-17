@@ -1,0 +1,45 @@
+<ion-content class="has-header has-tabs" ng-controller="fenleiCtrl">
+	<div class="row">
+		<button class="button col button-clear button-assertive"  ng-class="{active:tab == 1}" ng-click="setTab(1)">热门推荐</button>
+		<button class="button col button-clear button-energized" ng-class="{active:tab == 2}" ng-click="setTab(2)">技术类</button>
+		<button class="button col button-clear button-positive" ng-class="{active:tab == 3}" ng-click="setTab(3)">动漫类</button>
+		<button class="button col button-clear button-royal" ng-class="{active:tab == 4}" ng-click="setTab(4)">文学类</button>
+	</div>
+
+	<div class="list" ng-show="isTab(1)">
+		<h3>热门推荐</h3>
+		 <div class="item item-thumbnail-left" ng-repeat="book in remenleiList">
+		    <img ng-src="./shopApi/images/{{book.images[0].image_name}}" alt="" class="full-image"  ui-sref="xiangqing({id:{{book.id}}})">
+			<h3>{{book.title}}</h3>
+			<p>{{book.author}}</p>
+			<p class="list_price">{{book.price | currency : "&yen;"}}</p>
+		</div>
+	</div>
+	<div class="list" ng-show="isTab(2)">
+		<h3>技术</h3>
+	    <div class="item item-thumbnail-left" ng-repeat="book in jishuleiList">
+		    <img ng-src="./shopApi/images/{{book.images[0].image_name}}" alt="" class="full-image" ui-sref="xiangqing({id:{{book.id}}})">
+			<h3>{{book.title}}</h3>
+			<p>{{book.author}}</p>
+			<p class="list_price">{{book.price | currency : "&yen;"}}</p>
+		</div>
+	</div>
+	<div class="list" ng-show="isTab(3)">
+		<h3>动漫</h3>
+	    <div class="item item-thumbnail-left" ng-repeat="book in dongmanleiList" ui-sref="xiangqing({id:{{book.id}}})">
+		    <img ng-src="./shopApi/images/{{book.images[0].image_name}}" alt="" class="full-image">
+			<h3>{{book.title}}</h3>
+			<p>{{book.author}}</p>
+			<p class="list_price">{{book.price | currency : "&yen;"}}</p>
+		</div>
+	</div>
+	<div class="list" ng-show="isTab(4)">
+		<h3>文学</h3>
+	    <div class="item item-thumbnail-left" ng-repeat="book in wenxueleiList" ui-sref="xiangqing({id:{{book.id}}})">
+		    <img ng-src="./shopApi/images/{{book.images[0].image_name}}" alt="" class="full-image">
+			<h3>{{book.title}}</h3>
+			<p>{{book.author}}</p>
+			<p class="list_price">{{book.price | currency : "&yen;"}}</p>
+		</div>
+	</div>
+</ion-content>

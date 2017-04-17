@@ -1,0 +1,17 @@
+
+
+<ion-header-bar class="bar-royal" align-title="center" ng-controller="pinglunCtrl">
+	<button class="button button-clear" ng-click="$ionicGoBack()">
+		返回
+	</button>
+	<h1 class="title">评价</h1>
+</ion-header-bar>
+<div class="list list-inset" ng-controller="pinglunCtrl">
+	<div>
+		<span class="input-label">评论：</span>
+		<textarea id="" cols="45" rows="10"  placeholder="请书写你要评论的内容...." style="border:1px solid #ccc;" ng-model="neiRong"></textarea>
+		<br>
+		<button class="button button-balanced button-small" ng-click="neirongFn()">发表评论</button>
+		<a class="button button-calm button-small" ui-sref="xiangqing({id:24})">取消</a>
+	 </div>   
+</div>

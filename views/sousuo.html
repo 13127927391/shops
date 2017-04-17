@@ -1,0 +1,12 @@
+
+
+<ion-content padding="true" class="has-header has-tabs" ng-controller="sousuoCtrl">
+	<div class="list" ng-repeat="book in sousuoList">
+		<ion-item class="item item-thumbnail-left">
+			<img ng-src="./shopApi/images/{{book.images[0].image_name}}" alt="" ui-sref="xiangqing({id:{{book.id}}})" >
+			<h3>{{book.title}}</h3>
+			<p>{{book.author}}</p>
+			<p class="list_price">{{book.price | currency : "&yen;"}}</p>
+		</item>
+	</div>
+</ion-content>
